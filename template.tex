@@ -1,0 +1,177 @@
+% !TeX program = xelatex
+\documentclass[a4paper,12pt]{article}
+
+% 中文支持
+\usepackage[UTF8, heading=true]{ctex}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{fancyhdr}  % 添加页眉页脚控制包
+
+% 页面设置
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% 字体设置
+\usepackage{ctex}
+\usepackage{xeCJK}
+\let\songti\relax
+\setmainfont{Times New Roman}
+\setCJKsansfont{SimHei}[AutoFakeBold,AutoFakeSlant]
+\setCJKmainfont{SimSun}[AutoFakeBold,AutoFakeSlant]
+
+
+% 行距和段落间距设置
+\usepackage{setspace}
+\setstretch{1.5}
+\setlength{\parskip}{0.5\baselineskip}
+
+% 页眉页脚设置
+\pagestyle{fancy}
+\fancyhf{}  % 清除默认设置
+%\fancyhead[C]{文档标题}  % 页眉中间显示文档标题
+%\fancyfoot[C]{\thepage}  % 页脚中间显示页码
+\renewcommand{\headrulewidth}{0pt}  % 页眉下方的横线粗细
+\renewcommand{\footrulewidth}{0pt}    % 页脚上方的横线粗细(0表示没有横线)
+\usepackage[bottom,hang]{footmisc}
+\setlength{\footnotesep}{0.8\baselineskip} % 脚注项之间的距离
+\setlength{\skip\footins}{1.5cm} % 正文与脚注区域间的距离
+
+\usepackage{ragged2e}
+% 标题设置保持不变
+\ctexset{ 
+  section = {
+    name = {},
+    number = false,  % 去除节序号
+    format = {\Large\bfseries\heiti\centering},
+    indent = 0pt,
+    beforeskip = {\baselineskip},
+    afterskip = {\baselineskip}
+  },
+  subsection = {
+    name = {},
+    number = false,  % 去除小节序号
+    format = {\large\bfseries\heiti\justifying},
+    indent = 2\ccwd,
+    beforeskip = {0.2\baselineskip},
+    afterskip = {0.2\baselineskip}
+  },
+  subsubsection = {
+    name = {},
+    number = false,  % 去除小小节序号
+    format = {\normalsize\bfseries\heiti\justifying},
+    indent = 2\ccwd,
+    beforeskip = {0.2\baselineskip},
+    afterskip = {0.2\baselineskip}
+  },
+  paragraph = {
+    name = {},
+    number = false,  % 去除小小节序号
+    format = {\normalsize\bfseries\heiti\justifying},
+    indent = 2\ccwd,
+    beforeskip = {0.1\baselineskip},
+    afterskip = {0.1\baselineskip},
+    runin = false,   % 关键设置：禁用段落标题"run-in"样式
+    afterindent = true  % 确保标题后的文本缩进
+  },
+  subparagraph = {
+    name = {},
+    number = false,  % 去除小小节序号
+    format = {\normalsize\bfseries\heiti\justifying},
+    indent = 2\ccwd,
+    beforeskip = {0.1\baselineskip},
+    afterskip = {0.1\baselineskip},
+    runin = false,   % 关键设置：禁用段落标题"run-in"样式
+    afterindent = true  % 确保标题后的文本缩进
+  }
+}
+
+% 正文格式全面设置
+\usepackage{indentfirst}  % 确保章节后第一段也有缩进
+\usepackage{fontspec}
+% 设置中文字体和字号
+\renewcommand{\normalsize}{\songti\zihao{-4}}  % 正文使用宋体小四号
+
+% 重置可能影响正文格式的其他设置
+\allowbreak
+
+% 修改目录格式
+\usepackage{tocloft}  % 用于自定义目录格式
+
+% 修改引用格式
+\usepackage[backend=biber, style=gb7714-2015]{biblatex}
+\renewcommand{\thefootnote}{[\arabic{footnote}]}
+\addbibresource{ref.bib}
+% 请确保您已安装 biblatex-gb7714-2015 宏包
+
+%表格的相关设置
+\usepackage{array}
+\usepackage{tabulary}
+
+%编号的相关设置
+\usepackage{enumitem}
+\setlist[enumerate,1]{
+  itemindent=2\ccwd,    % 将整个列表项的文本块在其常规起始位置基础上再向右缩进 2\ccwd
+  listparindent=0pt    % 在这种情况下，通常不需要再对文本块进行额外的首行缩进
+}
+
+% 创建目录前应用的格式设置命令
+\setcounter{tocdepth}{2}
+\renewcommand{\cfttoctitlefont}{\songti\bfseries\zihao{4}}  % 目录标题使用黑体四号粗体
+% 设置目录内容为宋体四号粗体
+\renewcommand{\cftpartfont}{\songti\bfseries\zihao{4}}     % "部分"字体粗体
+% \renewcommand{\cftchapfont}{\songti\bfseries\zihao{4}}   % 删除或注释掉这一行，因为article类没有chapter
+\renewcommand{\cftsecfont}{\songti\bfseries\zihao{4}}      % 一级标题字体粗体
+\renewcommand{\cftsubsecfont}{\songti\bfseries\zihao{4}}   % 二级标题字体粗体
+
+% 设置二级目录（subsection）条目前的间距为一倍行距
+\setlength{\cftbeforesubsecskip}{0.7\baselineskip}
+% 确保其他间距合理
+\setlength{\cftbeforesecskip}{0.7\baselineskip} % 一级标题前间距稍大
+\setlength{\cftbeforesubsubsecskip}{0.7\baselineskip} % 三级标题前间距稍小
+
+%用于固定图表位置
+\usepackage{float}
+
+% 插入图片示例
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.0]{example-image}  % 这是一个LaTeX自带的示例图片
+    \caption{示例图片}
+    \label{fig:example}
+\end{figure}
+
+%序号样例
+\begin{enumerate}
+  \item 
+  \item 
+  \item 
+  \item  
+\end{enumerate}
+
+% 创建居中的表格
+\setlength{\tabcolsep}{0.5em}
+\begin{table}[htbp]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    % 使用array包的m列类型代替L实现垂直居中
+    \begin{tabulary}{\textwidth}{|>{\raggedright\arraybackslash}m{0.28\textwidth}|>{\centering\arraybackslash}m{0.12\textwidth}|>{\raggedright\arraybackslash}m{0.5\textwidth}|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{表头1}} &
+    \multicolumn{1}{|c|}{\textbf{表头2}} & 
+    \multicolumn{1}{|c|}{\textbf{表头3}} \\
+    \hline
+    XXXXXXX & XXXXXXX & XXXXXXX \\
+    \hline
+    XXXXXXX & XXXXXXX & XXXXXXX \\
+    \hline
+    XXXXXXX & XXXXXXX & XXXXXXX \\
+    \hline
+    XXXXXXX & XXXXXXX & XXXXXXX \\
+    \hline
+    XXXXXXX & XXXXXXX & XXXXXXX \\
+    \hline
+    \end{tabulary}
+    \caption{统计表}
+    \label{表1：统计表}
+\end{table}
