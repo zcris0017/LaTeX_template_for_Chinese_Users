@@ -81,7 +81,6 @@
     indent = 2\ccwd,
     beforeskip = {0.1\baselineskip},
     afterskip = {0.1\baselineskip},
-    runin = false,   % 关键设置：禁用段落标题"run-in"样式
     afterindent = true  % 确保标题后的文本缩进
   }
 }
@@ -177,5 +176,7 @@
     \caption{统计表}
     \label{表1：统计表}
 \end{table}
+
+\footnote{这是脚注。一二三级目录使用section, susection, subsubsection。 需要paragraph不作为标题出现请删除$runin = false$。引用统一放在.bib文件内，使用xelatex + biber + xelatex渲染。}
 
 \end{document}
