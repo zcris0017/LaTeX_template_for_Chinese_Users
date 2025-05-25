@@ -110,4 +110,4 @@ citations = [
 ]
 
 # 调用函数生成 .bib 文件
-generate_bib(citations, "citations.bib")
+generate_bib(citations, "citation_GBT.bib")
