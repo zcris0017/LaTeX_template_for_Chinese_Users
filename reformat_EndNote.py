@@ -108,7 +108,7 @@ def endnote_to_bibtex(citation_list, output_file='output.bib'):
     print(f"所有 BibTeX 条目已写入 {output_file}")
 
 # 测试用例
-citation_list = [
+citations = [
     """%0 Journal Article
      %A 陈秀山
 %+ 中国人民大学经济学系
@@ -130,4 +130,4 @@ citation_list = [
 ]
 
 # 调用函数
-endnote_to_bibtex(citation_list, 'citation_EndNote.bib')
+endnote_to_bibtex(citations, 'citation_EndNote.bib')
