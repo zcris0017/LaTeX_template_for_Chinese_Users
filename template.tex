@@ -134,6 +134,37 @@
 
 \begin{document}
 
+\pagenumbering{Roman}%阿拉伯数字则换为arabic
+\setcounter{page}{1}  % 将当前页的页码设置为1
+
+\newpage          % 结束当前页，开始新的一页
+\clearpage        % 结束当前页，处理所有待处理的浮动体(图表等)，然后开始新的一页
+
+% 居中显示"目录"标题
+\renewcommand{\contentsname}{目录}
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}  % 移除节标题中的序号格式
+\renewcommand{\numberline}[1]{}     % 移除目录中的序号
+\makeatother
+
+% 在标题与页码之间添加点(...)
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+
+\tableofcontents
+
+\thispagestyle{empty}%去除页码
+
+\newpage          % 结束当前页，开始新的一页
+\clearpage        % 结束当前页，处理所有待处理的浮动体(图表等)，然后开始新的一页
+
+\section{示例}
+
+\textbf{加粗字体}
+
 % 插入图片示例
 \begin{figure}[H]
     \centering
